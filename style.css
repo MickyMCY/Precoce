@@ -1,38 +1,78 @@
-/* Paleta nova: azul‑marinho, branco, cinza claro */
+/* Layout geral */
 body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
+  margin: 0; padding: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
   background: #f7f9fc;
   color: #111;
 }
 .container {
-  max-width: 500px;
-  margin: 40px auto 100px;
+  max-width: 600px;
+  margin: 40px auto 120px;
   padding: 0 20px;
 }
 h1 {
   color: #003366;
   text-align: center;
+  font-size: 2rem;
+  margin-bottom: 10px;
 }
 .subtexto {
   color: #555;
   text-align: center;
-  margin-bottom: 20px;
-}
-form label {
-  display: block;
-  margin-top: 15px;
-  color: #003366;
-}
-form input, form select {
-  width: 100%;
-  padding: 12px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  margin-bottom: 30px;
   font-size: 1rem;
 }
+
+/* Boxes destacados */
+.box {
+  background: #e6e9ef;
+  border-left: 6px solid #003366;
+  padding: 15px 20px;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+.box strong {
+  color: #003366;
+  font-size: 1.1rem;
+}
+
+/* Lista e passos destacados */
+ul.checklist li:before {
+  content: "✔️ ";
+}
+ol.passos {
+  counter-reset: passo;
+}
+ol.passos li:before {
+  counter-increment: passo;
+  content: counter(passo) ". ";
+  font-weight: bold;
+}
+
+/* Imagem de destaque */
+.img-destaque {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* Formulário com leve destaque */
+form {
+  background: #fff;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+label {
+  font-weight: bold;
+}
+input, select {
+  border: 1px solid #ccc;
+}
+
+/* Botões */
 button {
   margin-top: 20px;
   width: 100%;
@@ -42,29 +82,31 @@ button {
   border: none;
   border-radius: 6px;
   font-size: 1.1rem;
+  font-weight: bold;
   cursor: pointer;
 }
 button:hover {
   background: #00509e;
 }
+
+/* Menu fixo */
 .menu {
   position: fixed;
   bottom: 0;
-  left: 0;
   width: 100%;
   background: #fff;
   border-top: 1px solid #ccc;
   display: flex;
   justify-content: space-around;
+  font-size: 0.85rem;
 }
 .menu a {
   text-decoration: none;
   color: #555;
-  font-size: 0.85rem;
-  padding: 10px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 8px 0;
 }
 .menu a.ativo {
   color: #003366;
