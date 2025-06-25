@@ -9,8 +9,9 @@
 <body>
   <div class="container">
     <h1>Cansado de ser fraco na cama?</h1>
-    <p class="subtexto">Preenche o formulário e vamos personalizar o teu plano.</p>
-    <form id="inicioForm">
+    <img src="imagem-form.jpg" alt="Motivação" class="img-destaque">
+    <p class="subtexto">Preenche o formulário e vamos preparar o teu plano personalizado.</p>
+    <form id="formInicio">
       <label>Nome</label>
       <input type="text" id="nome" required>
       <label>Idade</label>
@@ -50,23 +51,16 @@
   </div>
 
   <script>
-    const form = document.getElementById('inicioForm');
+    const form = document.getElementById('formInicio');
     const campos = ['nome','idade','tempoAtual','meta'];
-
-    // Carregar valores do localStorage
     campos.forEach(id => {
       const el = document.getElementById(id);
       const salvo = localStorage.getItem(id);
       if (salvo) el.value = salvo;
     });
-
     form.addEventListener('submit', e => {
       e.preventDefault();
-      campos.forEach(id => {
-        const val = document.getElementById(id).value;
-        localStorage.setItem(id, val);
-      });
-      alert('Dados guardados! Agora navega pelo site.');
+      campos.forEach(id => localStorage.setItem(id, document.getElementById(id).value));
       window.location.href = 'receita.html';
     });
   </script>
