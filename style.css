@@ -1,114 +1,192 @@
-/* Layout geral */
-body {
-  margin: 0; padding: 0;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  background: #f7f9fc;
-  color: #111;
+/* RESET E BASE */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
-.container {
-  max-width: 600px;
-  margin: 40px auto 120px;
-  padding: 0 20px;
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Arial', sans-serif;
+  background: #001f3f; /* Azul-marinho base */
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
-h1 {
-  color: #003366;
+
+/* IMAGEM DE FUNDO (será aplicada no index) */
+body.bg-imagem {
+  background-image: url('fundo.jpg'); /* Substitui pelo nome da imagem */
+  background-size: cover;
+  background-position: center;
+}
+
+/* CONTAINER CENTRAL DO FORMULÁRIO */
+.formulario-box {
+  background-color: rgba(0, 0, 0, 0.65); /* Fundo translúcido escuro */
+  padding: 30px 20px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 420px;
+  margin: 50px auto;
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+  backdrop-filter: blur(3px);
+}
+
+/* TÍTULOS */
+h1, h2, h3 {
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-.subtexto {
-  color: #555;
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 1rem;
-}
-
-/* Boxes destacados */
-.box {
-  background: #e6e9ef;
-  border-left: 6px solid #003366;
-  padding: 15px 20px;
-  margin: 20px 0;
-  border-radius: 4px;
-}
-.box strong {
-  color: #003366;
-  font-size: 1.1rem;
-}
-
-/* Lista e passos destacados */
-ul.checklist li:before {
-  content: "✔️ ";
-}
-ol.passos {
-  counter-reset: passo;
-}
-ol.passos li:before {
-  counter-increment: passo;
-  content: counter(passo) ". ";
-  font-weight: bold;
-}
-
-/* Imagem de destaque */
-.img-destaque {
-  width: 100%;
-  max-height: 250px;
-  object-fit: cover;
-  border-radius: 8px;
+  color: #00bfff;
   margin-bottom: 20px;
 }
 
-/* Formulário com leve destaque */
-form {
-  background: #fff;
-  padding: 20px;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-label {
-  font-weight: bold;
-}
-input, select {
-  border: 1px solid #ccc;
+/* SUBTEXTO */
+p.subtexto {
+  text-align: center;
+  color: #ccc;
+  font-size: 0.95rem;
+  margin-bottom: 25px;
 }
 
-/* Botões */
-button {
-  margin-top: 20px;
+/* CAMPOS DO FORMULÁRIO */
+input[type="text"],
+select {
   width: 100%;
   padding: 14px;
-  background: #003366;
+  margin: 10px 0 20px;
+  background-color: #0c1a2b;
+  border: 1px solid #00bfff;
   color: #fff;
-  border: none;
-  border-radius: 6px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
-}
-button:hover {
-  background: #00509e;
+  border-radius: 10px;
+  font-size: 1rem;
+  appearance: none;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  box-shadow: 0 0 10px rgba(0,191,255, 0.2);
+  transition: all 0.3s ease;
 }
 
-/* Menu fixo */
+input::placeholder {
+  color: #ccc;
+}
+
+/* DROP-DOWN NÃO PODE ROLAR PARA OS LADOS */
+select {
+  background-image: url('seta.png'); /* opcional: seta personalizada */
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+}
+
+/* BOTÃO */
+button {
+  background-color: #00bfff;
+  color: #fff;
+  border: none;
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background-color: #009acd;
+}
+
+/* EFEITO DE DESAPARECER FORMULÁRIO */
+.hidden {
+  display: none !important;
+}
+
+/* TEXTO FIXO DE PROCESSAMENTO */
+#mensagem-processando {
+  display: none;
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 20px;
+  color: #00ffcc;
+}
+
+/* ESTILO GERAL DOS BOXES */
+.box {
+  background-color: #0c1a2b;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px 0;
+  box-shadow: 0 0 12px rgba(0,191,255, 0.15);
+  color: #eee;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.box strong {
+  color: #00bfff;
+}
+
+/* MENU INFERIOR */
 .menu {
   position: fixed;
   bottom: 0;
-  width: 100%;
-  background: #fff;
-  border-top: 1px solid #ccc;
+  left: 0;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.85);
   display: flex;
   justify-content: space-around;
-  font-size: 0.85rem;
+  padding: 10px 0;
+  border-top: 1px solid #00bfff;
+  z-index: 999;
 }
+
 .menu a {
+  text-align: center;
+  color: #fff;
   text-decoration: none;
-  color: #555;
+  font-size: 0.8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 8px 0;
 }
+
 .menu a.ativo {
-  color: #003366;
+  color: #00bfff;
   font-weight: bold;
+}
+
+/* WHATSAPP FLOATING BUTTON */
+.whatsapp-float {
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  font-size: 2rem;
+  z-index: 999;
+  text-decoration: none;
+}
+
+/* RESPONSIVO */
+@media (max-width: 450px) {
+  h1 {
+    font-size: 1.3rem;
+  }
+
+  .formulario-box {
+    padding: 20px 15px;
+  }
+
+  select, input, button {
+    font-size: 0.95rem;
+  }
+
+  .box {
+    font-size: 0.95rem;
+  }
 }
