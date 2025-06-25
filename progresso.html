@@ -2,54 +2,133 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
-  <title>Progresso – Acompanhamento</title>
+  <title>Progresso Diário</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <style>
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(7,1fr);
-      gap: 8px;
-      margin-top: 20px;
-    }
-    .grid button {
-      padding: 12px;
-      background: #e6e9ef;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    .grid button.done {
-      background: #003366;
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0a0f2c;
       color: #fff;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      padding-bottom: 120px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 1.8rem;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+
+    .subtexto {
+      text-align: center;
+      color: #ccc;
+      margin-bottom: 25px;
+      font-size: 1rem;
+    }
+
+    .grade {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .grade button {
+      padding: 12px;
+      background-color: #121a3a;
+      color: #fff;
+      border: 1px solid #444;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .grade button:hover {
+      background-color: #1d295f;
+    }
+
+    .grade button.ativo {
+      background-color: #ffcc00;
+      color: #000;
+    }
+
+    .menu {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #0a0f2c;
+      border-top: 1px solid #333;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      z-index: 999;
+    }
+
+    .menu a {
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      font-size: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .menu a.ativo {
+      color: #ffcc00;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Marcar Progresso</h1>
-    <p class="subtexto">Clica no dia que fizeste receita e exercício.</p>
-    <div class="grid" id="gridDias">
-      <!-- Botões 1‑30 -->
-      <script>
-        const grid = document.getElementById('gridDias');
-        const marcados = JSON.parse(localStorage.getItem('dias')) || [];
-        for(let i=1;i<=30;i++){
-          const btn = document.createElement('button');
-          btn.textContent = i;
-          if(marcados.includes(i)) btn.classList.add('done');
-          btn.addEventListener('click', () => {
-            if(btn.classList.toggle('done')){
-              marcados.push(i);
-            } else {
-              const idx = marcados.indexOf(i);
-              marcados.splice(idx,1);
-            }
-            localStorage.setItem('dias', JSON.stringify(marcados));
-          });
-          grid.append(btn);
-        }
-      </script>
+    <h1>Progresso Diário</h1>
+    <p class="subtexto">Marca abaixo os dias em que cumpriste a rotina.</p>
+
+    <div class="grade">
+      <!-- Dias de 1 a 30 -->
+      <!-- Podes adicionar "ativo" à classe do botão para marcar o progresso -->
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button>10</button>
+      <button>11</button>
+      <button>12</button>
+      <button>13</button>
+      <button>14</button>
+      <button>15</button>
+      <button>16</button>
+      <button>17</button>
+      <button>18</button>
+      <button>19</button>
+      <button>20</button>
+      <button>21</button>
+      <button>22</button>
+      <button>23</button>
+      <button>24</button>
+      <button>25</button>
+      <button>26</button>
+      <button>27</button>
+      <button>28</button>
+      <button>29</button>
+      <button>30</button>
+    </div>
   </div>
 
   <div class="menu">
