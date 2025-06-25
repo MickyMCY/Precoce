@@ -14,32 +14,29 @@
       font-family: Arial, sans-serif;
     }
 
-    .form-container {
-      background-color: rgba(10, 15, 44, 0.7); /* fundo translúcido escuro */
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 500px;
-      margin: 60px auto 100px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    }
-
     h1 {
       text-align: center;
       color: white;
-      margin-bottom: 20px;
+      margin-top: 60px;
+    }
+
+    .form-group {
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 0 20px;
     }
 
     label {
       display: block;
       color: white;
-      margin-top: 10px;
+      margin-top: 20px;
       font-weight: bold;
     }
 
     input, select {
       width: 100%;
       padding: 14px;
-      margin-top: 5px;
+      margin-top: 8px;
       border-radius: 8px;
       background-color: #1a2a5e; /* azul escuro */
       border: none;
@@ -52,8 +49,8 @@
     }
 
     button {
-      margin-top: 20px;
-      width: 100%;
+      margin: 30px auto;
+      width: 90%;
       padding: 15px;
       font-size: 1rem;
       background-color: #ffcc00;
@@ -61,6 +58,7 @@
       font-weight: bold;
       border: none;
       border-radius: 8px;
+      display: block;
       cursor: pointer;
     }
 
@@ -98,9 +96,9 @@
 </head>
 <body>
 
-  <div class="form-container">
-    <h1>Descubra Sua Solução</h1>
+  <h1>Descubra Sua Solução</h1>
 
+  <div class="form-group">
     <label for="nome">Teu nome</label>
     <input type="text" id="nome" name="nome" placeholder="ex: João">
 
@@ -144,8 +142,7 @@
 
   <script>
     function continuar() {
-      const form = document.querySelector('.form-container');
-      form.style.opacity = '0';
+      document.body.style.opacity = '0.4';
       setTimeout(() => {
         window.location.href = 'receita.html';
       }, 1000);
