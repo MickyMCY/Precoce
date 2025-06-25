@@ -5,12 +5,104 @@
   <title>Início – Deixar de Ser Fraco na Cama</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Fundo com imagem cobrindo a página */
+    body {
+      background: url('fundo-form.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      color: #fff;
+    }
+    /* Container central com fundo semi-transparente e sombra */
+    .container {
+      background: rgba(0, 51, 102, 0.85); /* Azul-marinho translúcido */
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 30px 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+    h1 {
+      color: #fff;
+      text-align: center;
+      font-size: 2rem;
+    }
+    .subtexto {
+      color: #ddd;
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 1rem;
+    }
+    form label {
+      display: block;
+      margin-top: 15px;
+      color: #fff;
+      font-weight: bold;
+    }
+    /* Inputs e selects com mesma largura e estilos no container */
+    form input, form select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    form input {
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
+    }
+    form select {
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
+      appearance: none;
+      background: #fff;
+      color: #333;
+    }
+    button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 14px;
+      background: #00509e;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #003366;
+    }
+    .menu {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #fff;
+      border-top: 1px solid #ccc;
+      display: flex;
+      justify-content: space-around;
+      font-size: 0.85rem;
+    }
+    .menu a {
+      text-decoration: none;
+      color: #555;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 8px 0;
+    }
+    .menu a.ativo {
+      color: #003366;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <h1>Cansado de ser fraco na cama?</h1>
-    <img src="imagem-form.jpg" alt="Motivação" class="img-destaque">
-    <p class="subtexto">Preenche o formulário e vamos preparar o teu plano personalizado.</p>
+    <p class="subtexto">Preenche o formulário e segue o teu plano.</p>
     <form id="formInicio">
       <label>Nome</label>
       <input type="text" id="nome" required>
@@ -55,8 +147,8 @@
     const campos = ['nome','idade','tempoAtual','meta'];
     campos.forEach(id => {
       const el = document.getElementById(id);
-      const salvo = localStorage.getItem(id);
-      if (salvo) el.value = salvo;
+      const val = localStorage.getItem(id);
+      if (val) el.value = val;
     });
     form.addEventListener('submit', e => {
       e.preventDefault();
