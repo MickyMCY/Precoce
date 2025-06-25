@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Progresso – Acompanhamento</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(7,1fr);
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .grid button {
+      padding: 12px;
+      background: #e6e9ef;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .grid button.done {
+      background: #003366;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Marcar Progresso</h1>
+    <p class="subtexto">Clica no dia que fizeste receita e exercício.</p>
+    <div class="grid" id="gridDias">
+      <!-- Botões 1‑30 -->
+      <script>
+        const grid = document.getElementById('gridDias');
+        const marcados = JSON.parse(localStorage.getItem('dias')) || [];
+        for(let i=1;i<=30;i++){
+          const btn = document.createElement('button');
+          btn.textContent = i;
+          if(marcados.includes(i)) btn.classList.add('done');
+          btn.addEventListener('click', () => {
+            if(btn.classList.toggle('done')){
+              marcados.push(i);
+            } else {
+              const idx = marcados.indexOf(i);
+              marcados.splice(idx,1);
+            }
+            localStorage.setItem('dias', JSON.stringify(marcados));
+          });
+          grid.append(btn);
+        }
+      </script>
+  </div>
+
+  <div class="menu">
+    <a href="index.html">🏠<br>Início</a>
+    <a href="receita.html">📋<br>Receita</a>
+    <a href="exercicios.html">💪<br>Exercícios</a>
+    <a href="progresso.html" class="ativo">📅<br>Progresso</a>
+    <a href="guia.html">📖<br>Guia</a>
+  </div>
+</body>
+</html>
