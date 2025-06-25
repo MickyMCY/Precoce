@@ -1,159 +1,69 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <title>Início – Deixar de Ser Fraco na Cama</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <style>
-    /* Fundo com imagem cobrindo a página */
-    body {
-      background: url('fundo-form.jpg') no-repeat center center fixed;
-      background-size: cover;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      color: #fff;
-    }
-    /* Container central com fundo semi-transparente e sombra */
-    .container {
-      background: rgba(0, 51, 102, 0.85); /* Azul-marinho translúcido */
-      max-width: 500px;
-      margin: 40px auto;
-      padding: 30px 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-    }
-    h1 {
-      color: #fff;
-      text-align: center;
-      font-size: 2rem;
-    }
-    .subtexto {
-      color: #ddd;
-      text-align: center;
-      margin-bottom: 25px;
-      font-size: 1rem;
-    }
-    form label {
-      display: block;
-      margin-top: 15px;
-      color: #fff;
-      font-weight: bold;
-    }
-    /* Inputs e selects com mesma largura e estilos no container */
-    form input, form select {
-      width: 100%;
-      padding: 12px;
-      margin-top: 5px;
-      border: none;
-      border-radius: 4px;
-      font-size: 1rem;
-    }
-    form input {
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
-    }
-    form select {
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
-      appearance: none;
-      background: #fff;
-      color: #333;
-    }
-    button {
-      margin-top: 25px;
-      width: 100%;
-      padding: 14px;
-      background: #00509e;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      font-size: 1.1rem;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #003366;
-    }
-    .menu {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: #fff;
-      border-top: 1px solid #ccc;
-      display: flex;
-      justify-content: space-around;
-      font-size: 0.85rem;
-    }
-    .menu a {
-      text-decoration: none;
-      color: #555;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 8px 0;
-    }
-    .menu a.ativo {
-      color: #003366;
-      font-weight: bold;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Receita Para Acabar com a Impotência</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <div class="container">
-    <h1>Cansado de ser fraco na cama?</h1>
-    <p class="subtexto">Preenche o formulário e segue o teu plano.</p>
-    <form id="formInicio">
-      <label>Nome</label>
-      <input type="text" id="nome" required>
-      <label>Idade</label>
+<body class="bg-imagem">
+  <div class="formulario-box" id="formulario">
+    <h1>Receita Para Acabar com a Impotência</h1>
+    <p class="subtexto">Preencha abaixo para personalizar o seu plano.</p>
+
+    <form id="form">
+      <input type="text" id="nome" placeholder="Digite o seu nome" required />
+
+      <label for="idade">Idade:</label>
       <select id="idade" required>
-        <option value="">Seleciona...</option>
-        <option>18 a 25 anos</option>
-        <option>26 a 35 anos</option>
-        <option>36 a 45 anos</option>
-        <option>46 a 65 anos</option>
+        <option value="">Seleciona a tua idade</option>
+        <option>18 - 25 anos</option>
+        <option>26 - 35 anos</option>
+        <option>36 - 50 anos</option>
+        <option>51 - 65 anos</option>
       </select>
-      <label>Quanto tempo duras atualmente?</label>
+
+      <label for="tempoAtual">Duração atual na cama:</label>
       <select id="tempoAtual" required>
-        <option value="">Seleciona...</option>
+        <option value="">Quanto tempo você dura hoje?</option>
         <option>Menos de 1 minuto</option>
         <option>1 a 2 minutos</option>
         <option>3 a 5 minutos</option>
         <option>6 a 10 minutos</option>
       </select>
-      <label>Que meta queres alcançar?</label>
+
+      <label for="meta">Qual a sua meta de duração?</label>
       <select id="meta" required>
-        <option value="">Seleciona...</option>
+        <option value="">Escolha a meta que deseja alcançar</option>
         <option>15 minutos</option>
         <option>20 minutos</option>
-        <option>30 minutos</option>
+        <option>40 minutos</option>
         <option>60 minutos ou mais</option>
       </select>
-      <button type="submit">Começar Agora</button>
+
+      <button type="submit">Continuar</button>
     </form>
   </div>
 
-  <div class="menu">
-    <a href="index.html" class="ativo">🏠<br>Início</a>
-    <a href="receita.html">📋<br>Receita</a>
-    <a href="exercicios.html">💪<br>Exercícios</a>
-    <a href="progresso.html">📅<br>Progresso</a>
-    <a href="guia.html">📖<br>Guia</a>
-  </div>
+  <div id="mensagem-processando">A processar... aguarde</div>
 
   <script>
-    const form = document.getElementById('formInicio');
-    const campos = ['nome','idade','tempoAtual','meta'];
-    campos.forEach(id => {
-      const el = document.getElementById(id);
-      const val = localStorage.getItem(id);
-      if (val) el.value = val;
-    });
-    form.addEventListener('submit', e => {
+    const form = document.getElementById('form');
+    const formulario = document.getElementById('formulario');
+    const mensagem = document.getElementById('mensagem-processando');
+
+    form.addEventListener('submit', function (e) {
       e.preventDefault();
-      campos.forEach(id => localStorage.setItem(id, document.getElementById(id).value));
-      window.location.href = 'receita.html';
+
+      formulario.classList.add('hidden');
+      mensagem.style.display = 'block';
+
+      // Tempo de espera de 1 segundo
+      setTimeout(() => {
+        const nome = document.getElementById('nome').value;
+        localStorage.setItem('nome_usuario', nome);
+        window.location.href = 'receita.html';
+      }, 1000);
     });
   </script>
 </body>
