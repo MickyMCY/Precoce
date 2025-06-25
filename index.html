@@ -52,7 +52,7 @@
 
     button {
       margin: 30px auto;
-      width: 90%;
+      width: 100%;
       padding: 15px;
       font-size: 1rem;
       background-color: #ffcc00;
@@ -66,33 +66,6 @@
 
     button:hover {
       background-color: #e6b800;
-    }
-
-    .menu {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: #0a0f2c;
-      display: flex;
-      justify-content: space-around;
-      padding: 10px 0;
-      border-top: 1px solid #333;
-    }
-
-    .menu a {
-      text-align: center;
-      color: #fff;
-      text-decoration: none;
-      font-size: 0.85rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .menu a.ativo {
-      color: #ffcc00;
-      font-weight: bold;
     }
   </style>
 </head>
@@ -134,16 +107,20 @@
     <button onclick="continuar()">Continuar</button>
   </div>
 
-  <div class="menu">
-    <a href="index.html" class="ativo">🏠<br>Início</a>
-    <a href="receita.html">📋<br>Receita</a>
-    <a href="exercicios.html">💪<br>Exercícios</a>
-    <a href="progresso.html">📅<br>Progresso</a>
-    <a href="guia.html">📖<br>Guia</a>
-  </div>
-
   <script>
     function continuar() {
+      const nome = document.getElementById('nome').value;
+      const idade = document.getElementById('idade').value;
+      const dura = document.getElementById('dura').value;
+      const meta = document.getElementById('meta').value;
+
+      // Armazenar os dados localmente
+      localStorage.setItem('nome', nome);
+      localStorage.setItem('idade', idade);
+      localStorage.setItem('dura', dura);
+      localStorage.setItem('meta', meta);
+
+      // Efeito de transição antes de mudar de página
       document.body.style.opacity = '0.4';
       setTimeout(() => {
         window.location.href = 'receita.html';
