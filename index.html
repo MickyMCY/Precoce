@@ -1,147 +1,135 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <title>Receita Para Acabar com Impotência</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>Receita Para Acabar com a Impotência</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    body {
+    body, html {
       margin: 0;
       padding: 0;
+      height: 100vh;
       background: url('fundo.jpg') no-repeat center center fixed;
       background-size: cover;
       font-family: Arial, sans-serif;
+      color: #fff;
     }
 
     .form-container {
-      background-color: rgba(10, 15, 44, 0.85);
-      padding: 20px;
-      border-radius: 10px;
+      background-color: rgba(0, 0, 0, 0.7); /* fundo escuro translúcido */
+      padding: 30px;
+      border-radius: 15px;
       max-width: 500px;
-      margin: 50px auto 100px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+      margin: 60px auto;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
     }
 
     h1 {
       text-align: center;
-      color: #ffffff;
+      color: #00aaff;
+      font-size: 1.8rem;
       margin-bottom: 20px;
     }
 
     label {
       display: block;
-      color: #ffffff;
-      margin: 15px 0 5px;
+      margin-top: 15px;
+      font-weight: bold;
     }
 
     input, select {
       width: 100%;
-      padding: 12px;
+      padding: 14px;
+      margin-top: 8px;
       border: none;
-      border-radius: 6px;
-      margin-bottom: 10px;
+      border-radius: 10px;
+      background-color: #222;
+      color: #fff;
       font-size: 1rem;
+      box-shadow: 0 0 5px rgba(0,0,0,0.4);
     }
 
     button {
+      margin-top: 25px;
       width: 100%;
-      padding: 15px;
-      background-color: #ffcc00;
-      color: #000000;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
+      padding: 16px;
+      font-size: 1.1rem;
       font-weight: bold;
-      cursor: pointer;
-    }
-
-    .menu {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: #0a0f2c;
-      border-top: 1px solid #333;
-      display: flex;
-      justify-content: space-around;
-      padding: 10px 0;
-      z-index: 999;
-    }
-
-    .menu a {
       color: #fff;
-      text-align: center;
-      text-decoration: none;
-      font-size: 0.85rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      background-color: #004080;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
     }
 
-    .menu a.ativo {
-      color: #ffcc00;
-      font-weight: bold;
+    button:hover {
+      background-color: #0066cc;
+    }
+
+    .hidden {
+      display: none;
     }
   </style>
 </head>
 <body>
+  <div class="form-container" id="formBox">
+    <h1>Receita Para Acabar com a Impotência</h1>
 
-  <div class="form-container">
-    <h1>Preenche os teus dados</h1>
-    <form id="formulario" onsubmit="guardarDados(); return false;">
-      <label for="nome">Qual é o teu nome?</label>
-      <input type="text" id="nome" name="nome" required>
+    <form id="userForm">
+      <label for="nome">O teu nome</label>
+      <input type="text" id="nome" name="nome" required />
 
-      <label for="idade">Qual é a tua idade?</label>
-      <select id="idade" name="idade" required>
-        <option value="">Seleciona</option>
-        <option>18 a 25</option>
-        <option>26 a 35</option>
-        <option>36 a 50</option>
-        <option>51 a 65</option>
+      <label for="idade">Tua idade</label>
+      <select id="idade" required>
+        <option value="">Escolhe uma faixa</option>
+        <option value="18-25">18 a 25 anos</option>
+        <option value="26-35">26 a 35 anos</option>
+        <option value="36-50">36 a 50 anos</option>
+        <option value="51-65">51 a 65 anos</option>
       </select>
 
-      <label for="tempoAtual">Quanto tempo consegues durar actualmente?</label>
-      <select id="tempoAtual" name="tempoAtual" required>
-        <option value="">Seleciona</option>
-        <option>Menos de 1 minuto</option>
-        <option>1 a 2 minutos</option>
-        <option>3 a 5 minutos</option>
-        <option>6 a 10 minutos</option>
+      <label for="atualmente">Quanto tempo dura atualmente?</label>
+      <select id="atualmente" required>
+        <option value="">Escolhe uma faixa</option>
+        <option value="menos1">Menos de 1 minuto</option>
+        <option value="1-2">1 a 2 minutos</option>
+        <option value="3-5">3 a 5 minutos</option>
+        <option value="6-10">6 a 10 minutos</option>
       </select>
 
-      <label for="meta">Qual é a tua meta?</label>
-      <select id="meta" name="meta" required>
-        <option value="">Seleciona</option>
-        <option>15 minutos</option>
-        <option>20 minutos</option>
-        <option>40 minutos</option>
-        <option>60 minutos ou mais</option>
+      <label for="meta">Qual o tempo que queres durar?</label>
+      <select id="meta" required>
+        <option value="">Escolhe a tua meta</option>
+        <option value="15">15 minutos</option>
+        <option value="20">20 minutos</option>
+        <option value="40">40 minutos</option>
+        <option value="60">60 minutos ou mais</option>
       </select>
 
       <button type="submit">Continuar</button>
     </form>
   </div>
 
-  <div class="menu">
-    <a href="index.html" class="ativo">🏠<br>Início</a>
-    <a href="receita.html">📋<br>Receita</a>
-    <a href="exercicios.html">💪<br>Exercícios</a>
-    <a href="progresso.html">📅<br>Progresso</a>
-    <a href="guia.html">📖<br>Guia</a>
-  </div>
-
   <script>
-    function guardarDados() {
-      const nome = document.getElementById('nome').value;
-      localStorage.setItem('nome', nome);
-      // Simular desaparecimento por 1 segundo
-      document.querySelector('.form-container').style.display = 'none';
+    const form = document.getElementById('userForm');
+    const formBox = document.getElementById('formBox');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Armazenar os dados localmente (para aparecer nas outras páginas)
+      localStorage.setItem('nome', document.getElementById('nome').value);
+
+      // Ocultar o formulário
+      formBox.classList.add('hidden');
+
+      // Esperar 1 segundo e redirecionar
       setTimeout(() => {
         window.location.href = 'receita.html';
       }, 1000);
-    }
+    });
   </script>
 </body>
 </html>
