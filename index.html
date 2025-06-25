@@ -2,66 +2,131 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <title>Receita Para Acabar com a Impotência</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: url('fundo.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      color: #fff;
+    }
+
+    .form-container {
+      background-color: rgba(0, 0, 0, 0.7); /* fundo escuro translúcido */
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 500px;
+      margin: 60px auto;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    }
+
+    h1 {
+      text-align: center;
+      color: #00aaff;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 14px;
+      margin-top: 8px;
+      border: none;
+      border-radius: 10px;
+      background-color: #222;
+      color: #fff;
+      font-size: 1rem;
+      box-shadow: 0 0 5px rgba(0,0,0,0.4);
+    }
+
+    button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 16px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #fff;
+      background-color: #004080;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #0066cc;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
 </head>
-<body class="bg-imagem">
-  <div class="formulario-box" id="formulario">
+<body>
+  <div class="form-container" id="formBox">
     <h1>Receita Para Acabar com a Impotência</h1>
-    <p class="subtexto">Preencha abaixo para personalizar o seu plano.</p>
 
-    <form id="form">
-      <input type="text" id="nome" placeholder="Digite o seu nome" required />
+    <form id="userForm">
+      <label for="nome">O teu nome</label>
+      <input type="text" id="nome" name="nome" required />
 
-      <label for="idade">Idade:</label>
+      <label for="idade">Tua idade</label>
       <select id="idade" required>
-        <option value="">Seleciona a tua idade</option>
-        <option>18 - 25 anos</option>
-        <option>26 - 35 anos</option>
-        <option>36 - 50 anos</option>
-        <option>51 - 65 anos</option>
+        <option value="">Escolhe uma faixa</option>
+        <option value="18-25">18 a 25 anos</option>
+        <option value="26-35">26 a 35 anos</option>
+        <option value="36-50">36 a 50 anos</option>
+        <option value="51-65">51 a 65 anos</option>
       </select>
 
-      <label for="tempoAtual">Duração atual na cama:</label>
-      <select id="tempoAtual" required>
-        <option value="">Quanto tempo você dura hoje?</option>
-        <option>Menos de 1 minuto</option>
-        <option>1 a 2 minutos</option>
-        <option>3 a 5 minutos</option>
-        <option>6 a 10 minutos</option>
+      <label for="atualmente">Quanto tempo dura atualmente?</label>
+      <select id="atualmente" required>
+        <option value="">Escolhe uma faixa</option>
+        <option value="menos1">Menos de 1 minuto</option>
+        <option value="1-2">1 a 2 minutos</option>
+        <option value="3-5">3 a 5 minutos</option>
+        <option value="6-10">6 a 10 minutos</option>
       </select>
 
-      <label for="meta">Qual a sua meta de duração?</label>
+      <label for="meta">Qual o tempo que queres durar?</label>
       <select id="meta" required>
-        <option value="">Escolha a meta que deseja alcançar</option>
-        <option>15 minutos</option>
-        <option>20 minutos</option>
-        <option>40 minutos</option>
-        <option>60 minutos ou mais</option>
+        <option value="">Escolhe a tua meta</option>
+        <option value="15">15 minutos</option>
+        <option value="20">20 minutos</option>
+        <option value="40">40 minutos</option>
+        <option value="60">60 minutos ou mais</option>
       </select>
 
       <button type="submit">Continuar</button>
     </form>
   </div>
 
-  <div id="mensagem-processando">A processar... aguarde</div>
-
   <script>
-    const form = document.getElementById('form');
-    const formulario = document.getElementById('formulario');
-    const mensagem = document.getElementById('mensagem-processando');
+    const form = document.getElementById('userForm');
+    const formBox = document.getElementById('formBox');
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      formulario.classList.add('hidden');
-      mensagem.style.display = 'block';
+      // Armazenar os dados localmente (para aparecer nas outras páginas)
+      localStorage.setItem('nome', document.getElementById('nome').value);
 
-      // Tempo de espera de 1 segundo
+      // Ocultar o formulário
+      formBox.classList.add('hidden');
+
+      // Esperar 1 segundo e redirecionar
       setTimeout(() => {
-        const nome = document.getElementById('nome').value;
-        localStorage.setItem('nome_usuario', nome);
         window.location.href = 'receita.html';
       }, 1000);
     });
